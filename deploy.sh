@@ -5,7 +5,7 @@ NAMESPACE="${_NAMESPACE}"
 GOOGLE_SRVC_ACCT_NAME="${_GOOGLE_SRVC_ACCT_NAME}"
 
 python3 -m pip install -r requirements.txt
-apt-get install dnsutils
+apt-get install dnsutils -y
 
 gcloud container clusters update "${GKE_CLUSTER}" \
   --enable-master-authorized-networks \
