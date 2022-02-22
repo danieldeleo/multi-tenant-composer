@@ -1,4 +1,7 @@
 steps:
+- name: apache/airflow:latest
+  entrypoint: test/validate_dag.py
+
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
   entrypoint: bash
   args:
