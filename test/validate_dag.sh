@@ -1,4 +1,5 @@
 #!/bin/bash
 
-python3 -m pip install -r requirements.txt
-PYTHONPATH=/workspace python3 test/validate_dag.py
+python3 -m venv venv && source venv/bin/activate
+venv/bin/python -m pip install -r requirements.txt
+PYTHONPATH=/workspace venv/bin/python test/validate_dag.py
