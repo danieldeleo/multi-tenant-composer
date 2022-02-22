@@ -1,9 +1,3 @@
-# Below variables will be set via Cloud Build variables
-REGION=us-east4
-GKE_CLUSTER="${_GKE_CLUSTER}"
-NAMESPACE="${_NAMESPACE}"
-GOOGLE_SRVC_ACCT_NAME="${_GOOGLE_SRVC_ACCT_NAME}"
-
 python3 -m pip install -r requirements.txt
 apt-get install dnsutils -y
 

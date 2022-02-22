@@ -2,4 +2,10 @@ steps:
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
   entrypoint: bash
   args:
-  - deploy.sh
+    - deploy.sh
+  env:
+    - PROJECT_ID=${PROJECT_ID}
+    - REGION=us-east4
+    - GKE_CLUSTER=${_GKE_CLUSTER}
+    - NAMESPACE=${_NAMESPACE}
+    - GOOGLE_SRVC_ACCT_NAME=${_GOOGLE_SRVC_ACCT_NAME}
