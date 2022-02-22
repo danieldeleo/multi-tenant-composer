@@ -15,7 +15,7 @@ default_args = {
 # for best practices
 YESTERDAY = datetime.datetime.now() - datetime.timedelta(days=1)
 
-TEAM_NAMESPACE = 'test6'
+TEAM_NAMESPACE = 'test7'
 
 with models.DAG(
     dag_id='multi_tenant_test',
