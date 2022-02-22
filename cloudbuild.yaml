@@ -2,7 +2,7 @@ steps:
 - name: python:3.8-slim-buster
   entrypoint: bash
   args:
-  - test/validate_dag.sh
+  - test/validate_dags.sh
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
   entrypoint: bash
   args:
