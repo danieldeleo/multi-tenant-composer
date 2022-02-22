@@ -41,7 +41,7 @@ with models.DAG(
     # the recommended solution is to increase the amount of nodes in order
     # to satisfy the computing requirements. Alternatively, launching pods
     # into a custom namespace will stop fighting over resources.
-    namespace='test1',
+    namespace='test6',
     # Docker image specified. Defaults to hub.docker.com, but any fully
     # qualified URLs will point to a custom repository. Supports private
     # gcr.io images if the Composer Environment is under the same
@@ -49,7 +49,7 @@ with models.DAG(
     # uses has permission to access the Google Container Registry
     # (the default service account has permission)
     image='gcr.io/google.com/cloudsdktool/cloud-sdk:latest',
-    service_account_name='test1-service-acct')
+    service_account_name='test6-service-acct')
 
   bq_query = KubernetesPodOperator(
     # The ID specified for the task.
@@ -70,7 +70,7 @@ with models.DAG(
     # the recommended solution is to increase the amount of nodes in order
     # to satisfy the computing requirements. Alternatively, launching pods
     # into a custom namespace will stop fighting over resources.
-    namespace='test1',
+    namespace='test6',
     # Docker image specified. Defaults to hub.docker.com, but any fully
     # qualified URLs will point to a custom repository. Supports private
     # gcr.io images if the Composer Environment is under the same
@@ -78,5 +78,5 @@ with models.DAG(
     # uses has permission to access the Google Container Registry
     # (the default service account has permission)
     image='gcr.io/google.com/cloudsdktool/cloud-sdk:latest',
-    service_account_name='test1-service-acct')
+    service_account_name='test6-service-acct')
   auth_list >> bq_query
