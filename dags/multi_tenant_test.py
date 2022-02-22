@@ -15,6 +15,8 @@ default_args = {
 # for best practices
 YESTERDAY = datetime.datetime.now() - datetime.timedelta(days=1)
 
+TEAM_NAMESPACE = 'test6'
+
 with models.DAG(
     dag_id='multi_tenant_test',
     schedule_interval=datetime.timedelta(days=1),
@@ -41,7 +43,7 @@ with models.DAG(
     # the recommended solution is to increase the amount of nodes in order
     # to satisfy the computing requirements. Alternatively, launching pods
     # into a custom namespace will stop fighting over resources.
-    namespace='test6',
+    namespace=TEAM_NAMESPACE,
     # Docker image specified. Defaults to hub.docker.com, but any fully
     # qualified URLs will point to a custom repository. Supports private
     # gcr.io images if the Composer Environment is under the same
@@ -49,7 +51,7 @@ with models.DAG(
     # uses has permission to access the Google Container Registry
     # (the default service account has permission)
     image='gcr.io/google.com/cloudsdktool/cloud-sdk:latest',
-    service_account_name='test6-service-acct')
+    service_account_name=f'{TEAM_NAMESPACE}-service-acct')
 
   bq_query = KubernetesPodOperator(
     # The ID specified for the task.
@@ -62,7 +64,7 @@ with models.DAG(
     arguments=[
       'query',
       '--nouse_legacy_sql',
-      'CREATE OR REPLACE TABLE `danny-bq`.testing.tpcds_100T_store_sales AS SELECT * FROM bigquerybench.tpcds_100T.store_sales'
+      'SELECT "Hello World!"'
     ],
     # The namespace to run within Kubernetes, default namespace is
     # `default`. There is the potential for the resource starvation of
@@ -70,7 +72,7 @@ with models.DAG(
     # the recommended solution is to increase the amount of nodes in order
     # to satisfy the computing requirements. Alternatively, launching pods
     # into a custom namespace will stop fighting over resources.
-    namespace='test6',
+    namespace=TEAM_NAMESPACE,
     # Docker image specified. Defaults to hub.docker.com, but any fully
     # qualified URLs will point to a custom repository. Supports private
     # gcr.io images if the Composer Environment is under the same
@@ -78,5 +80,5 @@ with models.DAG(
     # uses has permission to access the Google Container Registry
     # (the default service account has permission)
     image='gcr.io/google.com/cloudsdktool/cloud-sdk:latest',
-    service_account_name='test6-service-acct')
+    service_account_name=f'{TEAM_NAMESPACE}-service-acct')
   auth_list >> bq_query
