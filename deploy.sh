@@ -5,7 +5,7 @@ NAMESPACE="${_NAMESPACE}"
 GOOGLE_SRVC_ACCT_NAME="${_GOOGLE_SRVC_ACCT_NAME}"
 
 python3 -m pip install "apache-airflow[celery]==2.2.3" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.2.3/constraints-3.8.txt"
-apt-get install dig
+apt-get install dnsutils
 
 gcloud container clusters update "${GKE_CLUSTER}" \
   --enable-master-authorized-networks \
