@@ -4,6 +4,9 @@ GKE_CLUSTER="${_GKE_CLUSTER}"
 NAMESPACE="${_NAMESPACE}"
 GOOGLE_SRVC_ACCT_NAME="${_GOOGLE_SRVC_ACCT_NAME}"
 
+python3 -m pip install "apache-airflow[celery]==2.2.3" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.2.3/constraints-3.8.txt"
+apt-get install dig
+
 gcloud container clusters update "${GKE_CLUSTER}" \
   --enable-master-authorized-networks \
   --master-authorized-networks $(dig +short myip.opendns.com @resolver1.opendns.com)/32 --region "${REGION}"
