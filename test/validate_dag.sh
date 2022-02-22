@@ -1,4 +1,4 @@
 #!/bin/bash
 
-python -m pip install -r requirements.txt
-PYTHONPATH=/workspace python test/validate_dag.py
+python3 -m pip install -r requirements.txt
+PYTHONPATH=/workspace python3 test/validate_dag.py
