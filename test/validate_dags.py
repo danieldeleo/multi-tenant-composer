@@ -12,4 +12,5 @@ for dag in dags:
   tasks = module.dag.tasks
   for task in tasks:
     print(
-      f'Kubernetes Service Account for dag ({dag.name}) and task ({task.name}): {task.service_account_name}')
+      f'Kubernetes Service Account for dag ({dag.name})' +
+      f'and task ({task.name}): {task.service_account_name}')
