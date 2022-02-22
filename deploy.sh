@@ -7,6 +7,8 @@ GOOGLE_SRVC_ACCT_NAME="${_GOOGLE_SRVC_ACCT_NAME}"
 python3 -m pip install -r requirements.txt
 apt-get install dnsutils -y
 
+gcloud config set project "${PROJECT_ID}"
+
 gcloud container clusters update "${GKE_CLUSTER}" \
   --enable-master-authorized-networks \
   --master-authorized-networks $(dig +short myip.opendns.com @resolver1.opendns.com)/32 --region "${REGION}"
